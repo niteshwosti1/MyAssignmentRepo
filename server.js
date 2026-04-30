@@ -53,6 +53,16 @@ app.post('/mean',(req,res)=>{
     res.json({mean: Number.parseFloat(result.toFixed(3))});
 })
 
+//Endpoint to calculate standard deviation
+app.post('/stddev',(req,res)=>{
+    const error = validateUserInput(req.body);
+    if (error){
+        return res.status(400).json({error});
+    }
+    const result = calculateStandardDeviation(req.body);
+    res.json({standardDeviation: Number.parseFloat(result.toFixed(3))});
+})
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
