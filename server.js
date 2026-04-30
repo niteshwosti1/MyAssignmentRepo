@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
@@ -41,6 +41,16 @@ function calculateStandardDeviation(numbers){
 // Endpoint to check server health
 app.get('/health',(req,res)=>{
     res.json({status:"Server is healthy", port: PORT});
+})
+
+//Endpoint to calculate mean
+app.post('/mean',(req,res)=>{
+    const error = validateUserInput(req.body);
+    if(error){
+        return res.status(400).json({error});
+    }
+    const result = calculateMean(req.body);
+    res.json({mean: Number.parseFloat(result.toFixed(3))});
 })
 
 app.listen(PORT, () => {
