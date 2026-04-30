@@ -1,0 +1,25 @@
+{
+  "name": "myassignmentrepo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "node": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niteshwosti1/MyAssignmentRepo.git"
+  },
+  "keywords": [],
+  "author": "Nitesh Wosti",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/niteshwosti1/MyAssignmentRepo/issues"
+  },
+  "homepage": "https://github.com/niteshwosti1/MyAssignmentRepo#readme",
+  "dependencies": {
+    "express": "^4.12.2"
+  }
+}
