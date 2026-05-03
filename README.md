@@ -3,7 +3,7 @@ This repo has HTTP web server with /mean and /stddev endpoints which is containe
 
 ## Requirements
 - Docker installed
-- Port 3000 available
+- Port specified available from .env file
 
 ## Env File
 ### Ensure you have .env file specifying PORT:
@@ -11,7 +11,7 @@ PORT = XXXX
 
 ## Automate with Shell Script for Mac/Linux or WSL Terminal in Windows Configuration
 ### Before running bash file make sure you change permission using following code (First time only):
-chmod -x run.sh
+chmod +x run.sh
 
 ### Use this code to run:
 ./run.sh
