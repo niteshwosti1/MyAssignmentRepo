@@ -7,7 +7,7 @@ This repo has HTTP web server with /mean and /stddev endpoints which is containe
 
 ## Env File
 ### Ensure you have .env file specifying PORT:
-PORT = XXXX
+PORT = 5000
 
 ## Automate with Shell Script for Mac/Linux or WSL Terminal in Windows Configuration
 ### Before running bash file make sure you change permission using following code (First time only):
@@ -18,7 +18,7 @@ chmod +x run.sh
 
 ## If you want to run manually
 ### Build the image: 
-docker build -t myassignmentrepo .
+docker build --build-arg PORT=5000 -t myassignmentrepo .
 
 ### Run the container:
 docker run -d --name myassignmentrepo --env-file .env -p 5000:5000 myassignmentrepo
