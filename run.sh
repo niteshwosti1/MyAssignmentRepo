@@ -10,13 +10,13 @@ else
 fi
 
 echo ""
-echo "Stopping existing container if runnig ..."
+echo "Stopping existing container if running ..."
 docker stop $CONTAINER_NAME 2>/dev/null || true
 docker rm $CONTAINER_NAME 2>/dev/null || true
 
 echo ""
 echo "Building Docker Image..."
-docker build -t $IMAGE_NAME .
+docker build --build-arg PORT=$PORT -t $IMAGE_NAME .
 
 if [ $? -ne 0 ]; then
   echo "Docker build failed. Exiting."
@@ -48,3 +48,9 @@ for i in $(seq 1 $MAX_ATTEMPTS); do
     sleep $WAIT_SECONDS
   fi
 done
+
+curl http://localhost:$PORT/mean -X POST -d '[1,2,3,4,5]' -H "Content-Type:application/json"
+echo ""
+
+curl http://localhost:$PORT/stddev -X POST -d '[1,2,3,4,5]' -H "Content-Type:application/json"
+echo ""
