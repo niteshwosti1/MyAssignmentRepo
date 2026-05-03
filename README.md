@@ -18,7 +18,7 @@ chmod +x run.sh
 
 ## If you want to run manually
 ### Build the image: 
-docker build -t myassignmentrepo
+docker build -t myassignmentrepo .
 
 ### Run the container:
 docker run -d --name myassignmentrepo --env-file .env -p 5000:5000 myassignmentrepo
