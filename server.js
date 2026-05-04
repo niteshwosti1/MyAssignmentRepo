@@ -5,17 +5,13 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json({limit:'1mb'}));
 
-app.use((err, req, res, next) => {
-    if (err.type === 'entity.parse.failed'){
-        return res.status(400).json({
-            error:"Invalid JSON body"
-        });
-    }
-    next(err);
-})
-
 //Function to validate user input
 function validateUserInput(body){
+     //Check if the body is udefined or null
+    if (body === undefined || body === null) {
+        return "Invalid input: Expected an array of numbers.";
+    }
+
     // Check if the array is valid and not empty
     if (!Array.isArray(body) || body.length === 0) {
         return "Invalid input: Expected a valid non-empty array.";
@@ -28,10 +24,6 @@ function validateUserInput(body){
         if (!Number.isFinite(item)) {
             return "Invalid input: Array contains infinite value(s).";
         }
-    }
-    //Check if the body is udefined or null
-    if (body === undefined || body === null) {
-        return "Invalid input: Expected an array of numbers.";
     }
     //Check if the array length exceeds the maximum load limit set
     const MAX_LENGTH = 100000;
@@ -84,6 +76,15 @@ app.post('/stddev',(req,res)=>{
     }
     const result = calculateStandardDeviation(req.body);
     res.json({standardDeviation: Number.parseFloat(result.toFixed(3))});
+})
+
+app.use((err, req, res, next) => {
+    if (err.type === 'entity.parse.failed'){
+        return res.status(400).json({
+            error:"Invalid JSON body"
+        });
+    }
+    next(err);
 })
 
 app.listen(PORT, () => {
