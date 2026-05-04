@@ -49,8 +49,8 @@ for i in $(seq 1 $MAX_ATTEMPTS); do
   fi
 done
 
-curl http://localhost:$PORT/mean -X POST -d '[1,2,3,4,5]' -H "Content-Type:application/json"
-echo ""
+# curl http://localhost:$PORT/mean -X POST -d '[1,2,3,4,5]' -H "Content-Type:application/json"
+# echo ""
 
-curl http://localhost:$PORT/stddev -X POST -d '[1,2,3,4,5]' -H "Content-Type:application/json"
-echo ""
+# curl http://localhost:$PORT/stddev -X POST -d '[1,2,3,4,5]' -H "Content-Type:application/json"
+# echo ""
