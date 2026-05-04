@@ -26,6 +26,13 @@ docker run -d --name myassignmentrepo --env-file .env -p 5000:5000 myassignmentr
 ## Test the endpoints
 ### To test the endpoint, either we can use POSTMAN or bash terminal
 
+### POSTMAN
+Enter the url http://localhost:5000/mean with following body:
+[1,2,3,4,5]
+
+- Make sure POST method is selected
+- Select raw data and from dropdown select JSON
+
 ### Bash Terminal
 #### For Mean of [1,2,3,4,5]:
 curl http://localhost:5000/mean -X POST -d '[1,2,3,4,5]' -H "Content-Type:application/json"
