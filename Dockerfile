@@ -17,7 +17,7 @@ RUN npm install --production
 COPY server.js ./
 
 # Set permissions to the non-root user
-RUN chown -R appuser:apgroup /app
+RUN chown -R appuser:appgroup /app
 
 # Switch to the non-root user
 USER appuser
@@ -32,7 +32,7 @@ EXPOSE ${PORT}
 # Health check to ensure the application is running and responsive
 HEALTHCHECK --interval=30s --timeout=3s \
     CMD wget -qO- http://localhost:${PORT}/health||exit 1
-    
+
 # Command to run the application
 CMD ["node","server.js"]
 
